@@ -1,0 +1,12 @@
+com\hugong\ssm\service\impl\IOrdersServiceImpl.class
+com\hugong\ssm\service\impl\IRoleServiceImpl.class
+com\hugong\ssm\service\impl\ISysLogImpl.class
+com\hugong\ssm\service\impl\IUserServiceImpl.class
+com\hugong\ssm\service\IProductService.class
+com\hugong\ssm\service\IOrdersService.class
+com\hugong\ssm\service\IUserService.class
+com\hugong\ssm\service\IPermissionService.class
+com\hugong\ssm\service\ISysLogService.class
+com\hugong\ssm\service\IRoleService.class
+com\hugong\ssm\service\impl\IPermissionImpl.class
+com\hugong\ssm\service\impl\IProductServiceImpl.class

@@ -1,0 +1,8 @@
+com\hugong\ssm\dao\IRoleDao.class
+com\hugong\ssm\dao\ITravellerDao.class
+com\hugong\ssm\dao\IOrdersDao.class
+com\hugong\ssm\dao\ISysLogDao.class
+com\hugong\ssm\dao\IUserDao.class
+com\hugong\ssm\dao\IMemberDao.class
+com\hugong\ssm\dao\IPermissionDao.class
+com\hugong\ssm\dao\IProductDao.class

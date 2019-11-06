@@ -1,0 +1,8 @@
+com\hugong\ssm\domain\Traveller.class
+com\hugong\ssm\domain\SysLog.class
+com\hugong\ssm\domain\Permission.class
+com\hugong\ssm\domain\UserInfo.class
+com\hugong\ssm\domain\Member.class
+com\hugong\ssm\domain\Orders.class
+com\hugong\ssm\domain\Product.class
+com\hugong\ssm\domain\Role.class

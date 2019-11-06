@@ -1,0 +1,7 @@
+com\hugong\ssm\controller\OrdersController.class
+com\hugong\ssm\controller\PermissionController.class
+com\hugong\ssm\controller\RoleController.class
+com\hugong\ssm\controller\SysLogController.class
+com\hugong\ssm\controller\LogAop.class
+com\hugong\ssm\controller\ProductController.class
+com\hugong\ssm\controller\UserController.class
