@@ -1,5 +1,6 @@
 package com.hugong.ssm.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.hugong.ssm.domain.Permission;
 import com.hugong.ssm.domain.Role;
 import com.hugong.ssm.service.IRoleService;
@@ -19,11 +20,13 @@ public class RoleController {
     private IRoleService roleService;
 
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll() throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1")Integer page,
+                                @RequestParam(name = "size",required = true,defaultValue = "4")Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<Role> roleList = roleService.findAll();
-        mv.addObject("roleList", roleList);
-        mv.setViewName("role-list");
+        List<Role> roleList = roleService.findAll(page,size);
+        PageInfo pageInfo = new PageInfo(roleList);
+        mv.addObject("pageInfo", pageInfo);
+        mv.setViewName("role-page-list");
         return mv;
     }
 

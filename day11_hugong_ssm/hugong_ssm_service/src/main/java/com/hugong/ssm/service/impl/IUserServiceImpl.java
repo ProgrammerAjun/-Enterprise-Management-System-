@@ -1,5 +1,7 @@
 package com.hugong.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hugong.ssm.dao.IUserDao;
 import com.hugong.ssm.domain.Role;
 import com.hugong.ssm.domain.UserInfo;
@@ -28,7 +30,9 @@ public class IUserServiceImpl implements IUserService {
 
     //查询所有用户
     @Override
-    public List<UserInfo> findAll() throws Exception {
+    public List<UserInfo> findAll(int page,int size) throws Exception {
+        //参数pageNum是页码值，参数pageSize代表每页显示条数
+        PageHelper.startPage(page,size );
         List<UserInfo> userInfoList = userDao.findAll();
         return userInfoList;
     }

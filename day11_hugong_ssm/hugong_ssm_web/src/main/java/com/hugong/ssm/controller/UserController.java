@@ -1,5 +1,6 @@
 package com.hugong.ssm.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.hugong.ssm.domain.Role;
 import com.hugong.ssm.domain.UserInfo;
 import com.hugong.ssm.service.IUserService;
@@ -51,11 +52,13 @@ public class UserController {
     //查询所有用户
     @RequestMapping("findAll.do")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView findAll() throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page,
+                                @RequestParam(name = "size",required = true,defaultValue = "4") Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<UserInfo> userInfoList = userService.findAll();
-        mv.addObject("userList",userInfoList );
-        mv.setViewName("user-list");
+        List<UserInfo> userInfoList = userService.findAll(page,size);
+        PageInfo pageInfo = new PageInfo(userInfoList);
+        mv.addObject("pageInfo",pageInfo );
+        mv.setViewName("user-page-list");
         return mv;
     }
 

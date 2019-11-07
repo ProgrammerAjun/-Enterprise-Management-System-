@@ -1,5 +1,7 @@
 package com.hugong.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hugong.ssm.dao.IRoleDao;
 import com.hugong.ssm.domain.Permission;
 import com.hugong.ssm.domain.Role;
@@ -17,7 +19,8 @@ public class IRoleServiceImpl implements IRoleService {
     private IRoleDao roleDao;
 
     @Override
-    public List<Role> findAll() throws Exception {
+    public List<Role> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page,size );
         return roleDao.findAll();
     }
 

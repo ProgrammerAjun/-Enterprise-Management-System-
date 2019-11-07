@@ -1,5 +1,6 @@
 package com.hugong.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.hugong.ssm.dao.ISysLogDao;
 import com.hugong.ssm.domain.SysLog;
 import com.hugong.ssm.service.ISysLogService;
@@ -22,7 +23,8 @@ public class ISysLogImpl implements ISysLogService {
     }
 
     @Override
-    public List<SysLog> findAll() throws Exception {
+    public List<SysLog> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page,size );
         return sysLogDao.findAll();
     }
 }

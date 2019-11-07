@@ -35,21 +35,21 @@
 
 					<li id="system-setting">
 						<security:authorize access="hasRole('ROLE_ADMIN')">
-						<a href="${pageContext.request.contextPath}/user/findAll.do"> <i
+						<a href="${pageContext.request.contextPath}/user/findAll.do?page=1&size=4"> <i
 							class="fa fa-circle-o"></i> 用户管理
 						</a>
 						</security:authorize>
 					</li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/role/findAll.do"> <i
+						href="${pageContext.request.contextPath}/role/findAll.do?page=1&size=4"> <i
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/permission/findAll.do">
+						href="${pageContext.request.contextPath}/permission/findAll.do?page=1&size=4">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/sysLog/findAll.do"> <i
+						href="${pageContext.request.contextPath}/sysLog/findAll.do?page=1&size=4"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>

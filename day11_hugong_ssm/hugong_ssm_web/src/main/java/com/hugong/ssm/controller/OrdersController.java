@@ -40,7 +40,7 @@ public class OrdersController {
         //PageInfo就是一个分页Bean
         PageInfo pageInfo = new PageInfo(ordersList);
         mv.addObject("pageInfo",pageInfo);
-        mv.setViewName("/orders-page-list");
+        mv.setViewName("orders-page-list");
         return mv;
     }
 

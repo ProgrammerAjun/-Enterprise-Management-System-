@@ -6,7 +6,7 @@ import com.hugong.ssm.domain.Role;
 import java.util.List;
 
 public interface IRoleService {
-    public List<Role> findAll() throws Exception;
+    public List<Role> findAll(int page,int size) throws Exception;
 
     void save(Role role) throws Exception;
 
