@@ -31,4 +31,19 @@ public class IProductServiceImpl implements IProductService {
     public void save(Product product) throws Exception {
         productDao.save(product);
     }
+
+    @Override
+    public void updateProductById(String productId) throws Exception {
+        productDao.updateProductById(productId);
+    }
+
+    @Override
+    public Product findById(String productId) throws Exception {
+        return productDao.findById(productId);
+    }
+
+    @Override
+    public void delProduCtById(String productId) {
+        productDao.delProduCtById(productId);
+    }
 }

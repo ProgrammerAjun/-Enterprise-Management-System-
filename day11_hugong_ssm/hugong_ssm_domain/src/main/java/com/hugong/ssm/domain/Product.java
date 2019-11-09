@@ -5,6 +5,7 @@ import com.hugong.ssm.utils.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**

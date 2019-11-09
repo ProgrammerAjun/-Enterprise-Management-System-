@@ -58,13 +58,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理
-                <small>数据列表</small>
+                产品管理
+                <small>产品列表</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="#">产品管理</a></li>
+                <li class="active">产品列表</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -91,7 +91,7 @@
                                             onclick="location.href='${pageContext.request.contextPath}/pages/product-add.jsp'">
                                         <i class="fa fa-file-o"></i> 新建
                                     </button>
-                                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+                                    <button type="button" class="btn btn-default" title="删除" onclick="batchDeletes()"><i class="fa fa-trash-o"></i> 删除</button>
                                     <button type="button" class="btn btn-default" title="开启"><i class="fa fa-check"></i> 开启</button>
                                     <button type="button" class="btn btn-default" title="屏蔽"><i class="fa fa-ban"></i> 屏蔽</button>
                                     <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-refresh"></i> 刷新</button>
@@ -128,7 +128,7 @@
 
                             <c:forEach items="${pageInfo.list}" var="product">
                             <tr>
-                                <td><input name="ids" type="checkbox"></td>
+                                <td><input name="subcheck" type="checkbox" id="subcheck" value="${product.id}"></td>
                                 <td>${product.id}</td>
                                 <td>${product.productNum}
                                 </td>
@@ -139,9 +139,9 @@
                                 <td class="text-center">${product.productDesc}</td>
                                 <td class="text-center">${product.productStatusStr}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs">订单</button>
-                                    <button type="button" class="btn bg-olive btn-xs">详情</button>
-                                    <button type="button" class="btn bg-olive btn-xs">编辑</button>
+                                    <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/product/updateResearch.do?id=${product.id}'">编辑</button>
+                                    <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/product/findById.do?id=${product.id}'">详情</button>
+                                    <button type="button" class="btn bg-olive btn-xs">删除</button>
                                 </td>
                             </tr>
 
@@ -311,6 +311,36 @@
         });
     });
 
+    //进行删除复选框
+    function batchDeletes(){
+        //判断至少写了一项
+        var checkedNum = $("input[name='subcheck']:checked").length;
+        if(checkedNum==0){
+            alert("请至少选择一项!");
+            return false;
+        }
+        if(confirm("确定删除所选项目?")){
+            var checkedList = new Array();
+            $("input[name='subcheck']:checked").each(function(){
+                checkedList.push($(this).val());
+            });
+
+            $.ajax({
+                type:"Post",
+                url:"http://localhost:8080/hugong_ssm_web/product/delete.do",
+                data:{"delitems":checkedList.toString()},
+                datatype:"html",
+                success:function(data){
+                    /*$("[name='checkbox2']:checkbox").attr("checked",false);
+                    location.reload();//页面刷新*/
+                    art.dialog.tips('删除成功!');
+                },
+                error:function(data){
+                    art.dialog.tips('删除失败!');
+                }
+            });
+        }
+    }
 
     // 设置激活菜单
     function setSidebarActive(tagUri) {
@@ -336,6 +366,7 @@
         $("#selall").click(function() {
             var clicks = $(this).is(':checked');
             if (!clicks) {
+                location.reload();//页面刷新
                 $("#dataList td input[type='checkbox']").iCheck("uncheck");
             } else {
                 $("#dataList td input[type='checkbox']").iCheck("check");

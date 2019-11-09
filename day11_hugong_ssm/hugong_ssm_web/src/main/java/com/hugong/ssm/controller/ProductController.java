@@ -18,9 +18,52 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+    //新建产品
     @RequestMapping("/save.do")
     public String save(Product product) throws Exception {
         productService.save(product);
+        return "redirect:findAll.do";
+    }
+
+    //查询订单详情(不可修改信息)
+    @RequestMapping("findById.do")
+    public ModelAndView findById(@RequestParam(name = "id",required = true)String productId) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        Product product = productService.findById(productId);
+        mv.addObject("product",product);
+        mv.setViewName("product-show");
+        return mv;
+    }
+
+    //修改产品信息(第一步：查询产品信息（可修改信息）)
+    @RequestMapping("/updateResearch.do")
+    public ModelAndView updateProductById(@RequestParam(name = "id",required = true)String productId) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        Product product = productService.findById(productId);
+        mv.addObject("product",product);
+        mv.setViewName("product-edit");
+        return mv;
+    }
+
+    //修改产品信息(第二步：拿到表单提交的信息，进行保存)
+    @RequestMapping("/update.do")
+    public String update(@RequestParam(name = "id",required = true)String productId) throws Exception{
+        productService.updateProductById(productId);
+        return "redirect:findAll.do";
+    }
+
+    //删除商品
+    @RequestMapping("/delete.do")
+    public String batchDeletes(@RequestParam(name = "delitems")String delitems) {
+        String[] strs = delitems.split(",");
+        for (int i = 0; i < strs.length; i++) {
+            try {
+                String productId = strs[i];
+                System.out.printf("订单编号为："+productId);
+                productService.delProduCtById(productId);
+            } catch (Exception e) {
+            }
+        }
         return "redirect:findAll.do";
     }
 
@@ -33,7 +76,8 @@ public class ProductController {
         List<Product> ps = productService.findAll(page,size);
         PageInfo pageInfo = new PageInfo(ps);
         mv.addObject("pageInfo",pageInfo);
-        mv.setViewName("product-list-myself");
+        mv.setViewName("product-page-list");
         return mv;
     }
+
 }

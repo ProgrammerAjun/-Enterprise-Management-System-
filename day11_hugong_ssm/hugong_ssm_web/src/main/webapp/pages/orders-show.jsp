@@ -83,7 +83,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				订单管理 <small>全部订单</small>
+				订单管理 <small>订单详情</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="all-admin-index.html"><i

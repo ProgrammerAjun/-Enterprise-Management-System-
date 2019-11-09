@@ -90,12 +90,12 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 				<h1>
-					数据管理 <small>数据列表</small>
+					订单管理 <small>订单列表</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-					<li><a href="#">数据管理</a></li>
-					<li class="active">数据列表</li>
+					<li><a href="#">订单管理</a></li>
+					<li class="active">订单列表</li>
 				</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -122,7 +122,7 @@
 											onclick="location.href='${pageContext.request.contextPath}/pages/product-add.jsp'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
-										<button type="button" class="btn btn-default" title="删除">
+										<button type="button" class="btn btn-default" title="删除" onclick="batchDeletes()">
 											<i class="fa fa-trash-o"></i> 删除
 										</button>
 										<button type="button" class="btn btn-default" title="开启">
@@ -169,7 +169,8 @@
 									<c:forEach items="${pageInfo.list}" var="orders">
 
 										<tr>
-											<td><input name="ids" type="checkbox"></td>
+<%--											<td><input name="ids" type="checkbox"></td>--%>
+											<td><input name="subcheck" type="checkbox" id="subcheck" value="${orders.orderNum}"></td>
 											<td>${orders.id }</td>
 											<td>${orders.orderNum }</td>
 											<td>${orders.product.productName }</td>
@@ -177,9 +178,9 @@
 											<td>${orders.orderTimeStr }</td>
 											<td class="text-center">${orders.orderStatusStr }</td>
 											<td class="text-center">
-												<button type="button" class="btn bg-olive btn-xs">订单</button>
-												<button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
 												<button type="button" class="btn bg-olive btn-xs">编辑</button>
+												<button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
+												<button type="button" class="btn bg-olive btn-xs">删除</button>
 											</td>
 										</tr>
 									</c:forEach>
@@ -390,6 +391,38 @@
 			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&size="
 					+ pageSize;
 		}
+
+		//进行删除复选框
+		function batchDeletes(){
+			//判断至少写了一项
+			var checkedNum = $("input[name='subcheck']:checked").length;
+			if(checkedNum==0){
+				alert("请至少选择一项!");
+				return false;
+			}
+			if(confirm("确定删除所选项目?")){
+				var checkedList = new Array();
+				$("input[name='subcheck']:checked").each(function(){
+					checkedList.push($(this).val());
+				});
+
+				$.ajax({
+					type:"Post",
+					url:"http://localhost:8080/hugong_ssm_web/orders/delete.do",
+					data:{"delitems":checkedList.toString()},
+					datatype:"html",
+					success:function(data){
+						/*$("[name='checkbox2']:checkbox").attr("checked",false);
+						location.reload();//页面刷新*/
+						art.dialog.tips('删除成功!');
+					},
+					error:function(data){
+						art.dialog.tips('删除失败!');
+					}
+				});
+			}
+		}
+
 		$(document).ready(function() {
 			// 选择框
 			$(".select2").select2();

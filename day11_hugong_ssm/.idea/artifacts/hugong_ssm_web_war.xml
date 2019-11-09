@@ -1,6 +1,12 @@
 <component name="ArtifactManager">
   <artifact type="war" name="hugong_ssm_web:war">
     <output-path>$PROJECT_DIR$/hugong_ssm_web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>hugong_ssm_web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="archive" name="hugong_ssm_web.war">
       <element id="artifact" artifact-name="hugong_ssm_web:war exploded" />
     </root>

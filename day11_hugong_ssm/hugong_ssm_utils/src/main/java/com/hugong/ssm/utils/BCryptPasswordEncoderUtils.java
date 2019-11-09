@@ -12,7 +12,7 @@ public class BCryptPasswordEncoderUtils {
     }
 
     public static void main(String[] args) {
-        String password = "123";
+        String password = "456";
         String secret = getBCryptPasswordEncoderUtils(password);
         System.out.println(secret);
         //$2a$10$Hb5kjML2EG.ZmTEaGCl9Q.CVjiAlctaxNsyE.XmPDJTRqVVKWt1OW

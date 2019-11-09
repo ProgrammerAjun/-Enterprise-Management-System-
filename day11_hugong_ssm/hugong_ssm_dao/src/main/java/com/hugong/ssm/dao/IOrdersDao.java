@@ -44,4 +44,8 @@ public interface IOrdersDao {
                     "com.hugong.ssm.dao.ITravellerDao.findByOrdersId"))
     })
     Orders findByID(String ordersId) throws Exception;
+
+    //进行订单删除操作
+    /*@Delete("delete from orders where orderNum = #{orderNum}")
+    void delOrdersByNum(String orderNum);*/
 }
