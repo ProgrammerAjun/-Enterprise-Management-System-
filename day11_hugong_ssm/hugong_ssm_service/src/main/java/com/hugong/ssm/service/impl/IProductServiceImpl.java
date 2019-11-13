@@ -33,8 +33,8 @@ public class IProductServiceImpl implements IProductService {
     }
 
     @Override
-    public void updateProductById(String productId) throws Exception {
-        productDao.updateProductById(productId);
+    public void updateProduct(Product product) throws Exception {
+        productDao.updateProduct(product);
     }
 
     @Override
@@ -45,5 +45,11 @@ public class IProductServiceImpl implements IProductService {
     @Override
     public void delProduCtById(String productId) {
         productDao.delProduCtById(productId);
+    }
+
+    @Override
+    public List<Product> findByCityName(String cityName,int page,int size) throws Exception {
+        PageHelper.startPage(page,size);
+        return productDao.findByCityName(cityName);
     }
 }

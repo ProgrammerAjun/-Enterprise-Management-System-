@@ -24,7 +24,7 @@
 	href="${pageContext.request.contextPath}/plugins/iCheck/square/blue.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url(img/center.jpg);background-size: cover">
 	<div class="login-box">
 		<div class="login-logo">
 			<a href="all-admin-index.html"><b>ITCAST</b>后台管理系统</a>

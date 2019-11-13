@@ -19,6 +19,10 @@ public interface IRoleDao {
     })
     public List<Role> findRoleByUserId(String userId) throws Exception;
 
+    //根据权限id查询出所对应的角色
+    @Select("select * from role where id in (select roleId from role_permission where permissionId = #{permissionId})")
+    public List<Role> findRoleByPermissionId(String permissionId) throws Exception;
+
     @Select("select * from role")
     public List<Role> findAll() throws Exception;
 

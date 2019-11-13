@@ -14,9 +14,11 @@ public interface IProductService {
 
     void save(Product product) throws Exception;
 
-    void updateProductById(String productId) throws Exception;
+    void updateProduct(Product product) throws Exception;
 
     Product findById(String productId) throws Exception;
 
     void delProduCtById(String productId);
+
+    List<Product> findByCityName(String cityName,int page,int size) throws Exception;
 }

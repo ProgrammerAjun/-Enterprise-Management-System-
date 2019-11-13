@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -47,8 +48,8 @@ public class ProductController {
 
     //修改产品信息(第二步：拿到表单提交的信息，进行保存)
     @RequestMapping("/update.do")
-    public String update(@RequestParam(name = "id",required = true)String productId) throws Exception{
-        productService.updateProductById(productId);
+    public String update(Product product) throws Exception{
+        productService.updateProduct(product);
         return "redirect:findAll.do";
     }
 
@@ -76,7 +77,22 @@ public class ProductController {
         List<Product> ps = productService.findAll(page,size);
         PageInfo pageInfo = new PageInfo(ps);
         mv.addObject("pageInfo",pageInfo);
-        mv.setViewName("product-page-list");
+        mv.setViewName("product-search-list");
+        return mv;
+    }
+
+    //搜索框模拟查询信息
+    @RequestMapping("/findByCityName.do")
+    public ModelAndView findByCityName(@RequestParam(name = "cityName",required = true)String cityName2,
+                                       @RequestParam(name = "page",required = true,defaultValue = "1")Integer page,
+                                       @RequestParam(name = "size",required = true,defaultValue = "4")Integer size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        String cityName = new String(cityName2.getBytes("ISO-8859-1"),"utf-8");
+        List<Product> productList = productService.findByCityName(cityName,page,size);
+        System.out.println(productList);
+        PageInfo pageInfo = new PageInfo(productList);
+        mv.addObject("pageInfo", pageInfo);
+        mv.setViewName("product-search-list");
         return mv;
     }
 

@@ -150,22 +150,11 @@
 											<td>${role.roleName }</td>
 											<td>${role.roleDesc }</td>																				
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/role/findById.do?id=${role.id}" class="btn bg-olive btn-xs">详情</a>
 												<a href="${pageContext.request.contextPath}/role/findRoleByIdAndAllPermission.do?id=${role.id}" class="btn bg-olive btn-xs">添加权限</a>
 											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
-								<!--
-                            <tfoot>
-                            <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
-                            </tr>
-                            </tfoot>-->
 							</table>
 							<!--数据列表/-->
 
@@ -179,7 +168,7 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
+								第${pageInfo.pageNum}页，总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
 								<select class="form-control" id="changePageSize" onchange="changePageSize()">
 									<option>1</option>
 									<option>2</option>

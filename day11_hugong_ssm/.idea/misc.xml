@@ -7,6 +7,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/hugong_ssm_web/pom.xml" />
+        <option value="$PROJECT_DIR$/hugong_ssm_utils/pom.xml" />
+        <option value="$PROJECT_DIR$/hugong_ssm_service/pom.xml" />
+        <option value="$PROJECT_DIR$/hugong_ssm_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/hugong_ssm_dao/pom.xml" />
       </list>
     </option>
   </component>

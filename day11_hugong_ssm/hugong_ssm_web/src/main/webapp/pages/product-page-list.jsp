@@ -3,6 +3,19 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<script>
+        //入口函数
+        $(function () {
+            //给搜索按钮绑定单击事件，获取搜索输入框的内容
+            $("#search-button").click(function () {
+                //获取输入框的值
+                var cityName = $("#search_input").val();
+                //跳转路径http://localhost/travel/route_list.html?cid=5，拼接上rname
+                // var cid = getParameter("cid");
+                location.href = "http://localhost:8080/hugong_ssm_web/product/findByCityName.do?cityName="+cityName;
+            });
+        })
+</script>
 <head>
     <!-- 页面meta -->
     <meta charset="utf-8">
@@ -141,7 +154,7 @@
                                 <td class="text-center">
                                     <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/product/updateResearch.do?id=${product.id}'">编辑</button>
                                     <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/product/findById.do?id=${product.id}'">详情</button>
-                                    <button type="button" class="btn bg-olive btn-xs">删除</button>
+                                    <button type="button" class="btn bg-olive btn-xs" onclick="batchDeletes()">删除</button>
                                 </td>
                             </tr>
 
@@ -176,8 +189,8 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="搜索">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <input  type="text" class="form-control input-sm" placeholder="搜索">
+                                <span class="glyphicon glyphicon-search form-control-feedback" ></span>
                             </div>
                         </div>
                         <!--工具栏/-->
@@ -193,7 +206,7 @@
                 <div class="box-footer">
                     <div class="pull-left">
                         <div class="form-group form-inline">
-                            总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
+                            第${pageInfo.pageNum}页，总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
                             <select class="form-control" id="changePageSize" onchange="changePageSize()">
                                 <option>1</option>
                                 <option>2</option>

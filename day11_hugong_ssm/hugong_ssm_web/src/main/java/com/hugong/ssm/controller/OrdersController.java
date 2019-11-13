@@ -21,15 +21,6 @@ public class OrdersController {
     @Autowired
     private IOrdersService ordersService;
 
-    //查询全部订单（未分页）
-    /*@RequestMapping("/findAll.do")
-    public ModelAndView findAll() throws Exception{
-        ModelAndView mv = new ModelAndView();
-        List<Orders> ordersList = ordersService.findAll();
-        mv.addObject("ordersList",ordersList );
-        mv.setViewName("orders-list");
-        return mv;
-    }*/
 
     //复选框删除订单操作(无法操作的原因是因为有关联表，权限不够)
     @RequestMapping("/delete.do")

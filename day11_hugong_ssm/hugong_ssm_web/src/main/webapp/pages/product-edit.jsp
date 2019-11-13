@@ -101,11 +101,6 @@
 						<div class="panel-heading">产品信息</div>
 						<div class="row data-type">
 
-							<div class="col-md-2 title">产品ID</div>
-							<div class="col-md-4 data">
-								<input type="text" class="form-control" name="id"
-									   placeholder="产品ID" value="${product.id}">
-							</div>
 							<div class="col-md-2 title">产品编号</div>
 							<div class="col-md-4 data">
 								<input type="text" class="form-control" name="productNum"
@@ -116,16 +111,17 @@
 								<input type="text" class="form-control" name="productName"
 									   placeholder="产品名称" value="${product.productName }">
 							</div>
-							<%--<div class="col-md-2 title">出发时间</div>
+
+							<div class="col-md-2 title">出发时间</div>
 							<div class="col-md-4 data">
 								<div class="input-group date">
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"></i>
 									</div>
-									<input type="text" class="form-control pull-right"
-										   id="datepicker-a3" name="departureTime" value="${product.departureTimeStr}">
+									<input type="text" class="form-control pull-right" id="datepicker-a3"
+										   name="departureTime" value="${product.departureTimeStr}">
 								</div>
-							</div>--%>
+							</div>
 
 							<div class="col-md-2 title">出发城市</div>
 							<div class="col-md-4 data">
@@ -151,7 +147,9 @@
 							<div class="col-md-2 title rowHeight2x">其他信息</div>
 							<div class="col-md-10 data rowHeight2x">
 							<textarea class="form-control" rows="3" placeholder="其他信息"
-									  name="productDesc">${product.productDesc}</textarea>
+									  name="productDesc">
+								${product.productDesc}
+							</textarea>
 							</div>
 
 						</div>

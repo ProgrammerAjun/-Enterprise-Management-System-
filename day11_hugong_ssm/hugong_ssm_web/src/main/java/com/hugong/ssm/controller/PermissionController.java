@@ -34,4 +34,14 @@ public class PermissionController {
         permissionService.save(permission);
         return "redirect:findAll.do";
     }
+
+    //查询资源权限详情
+    @RequestMapping("/findById")
+    public ModelAndView findById(@RequestParam(name = "id",required = true)String permissionId) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        Permission permission = permissionService.findById(permissionId);
+        mv.addObject("permission",permission );
+        mv.setViewName("permission-show");
+        return mv;
+    }
 }
