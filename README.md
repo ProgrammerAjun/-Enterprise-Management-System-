@@ -4,7 +4,8 @@ Enterprise-Management-System是基于ssm整合的企业权限管理系统，前�
 
 * 主要功能：订单产品等功能的增删改查，用户权限的不同所访问的权限也不同，可以给用户赋予权限和删除权限，还通过SpringAOP技术进行打印访问的日志信息等
 
-<img src="C:\Users\13291\AppData\Roaming\Typora\typora-user-images\1575620312413.png" alt="1575620312413" style="zoom:150%;" />
+
+![image](https://github.com/ProgrammerAjun/-Enterprise-Management-System-/blob/master/day11_hugong_ssm/hugong_ssm_web/src/main/webapp/img/view.png)
 
 
 
