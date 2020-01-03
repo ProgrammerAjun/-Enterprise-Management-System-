@@ -16,17 +16,11 @@ Enterprise-Management-System是基于ssm整合的企业权限管理系统，前�
 
 
 
-#### 二、新建项目，导入依赖
+#### 二、下载war包，tomcat直接部署
 
+* 2.1 下载地址：https://github.com/ProgrammerAjun/-Enterprise-Management-System-
 
-
-#### 三、先进行clean，然后重新在maven中install就可以了
-
-
-
-
-
-
+* 2.2 使用http://localhost:8080/hugong_ssm_web/login.jsp访问
 
 
 
